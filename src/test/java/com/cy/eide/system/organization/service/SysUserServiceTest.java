@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
 
 @Configuration
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {DruidConfig.class,BeanScanConfig.class, ShiroConfig.class})
+@ContextConfiguration(classes = {DruidConfig.class,BeanScanConfig.class,ShiroConfig.class})
 public class SysUserServiceTest {
 
     @Autowired

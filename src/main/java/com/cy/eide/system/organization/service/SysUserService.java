@@ -3,9 +3,7 @@ package com.cy.eide.system.organization.service;
 
 import com.cy.eide.system.organization.entity.SysUser;
 import com.cy.eide.system.organization.mapper.SysUserMapper;
-import com.cy.eide.system.organization.shiro.SecurityHelper;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;

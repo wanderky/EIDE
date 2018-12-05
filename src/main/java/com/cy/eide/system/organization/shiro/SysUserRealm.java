@@ -6,14 +6,16 @@ import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 
+
 @Component
 public class SysUserRealm extends AuthorizingRealm {
 
-    @Resource
+    @Autowired(required = false)
     private SysUserService sysUserService;
 
     @Override
