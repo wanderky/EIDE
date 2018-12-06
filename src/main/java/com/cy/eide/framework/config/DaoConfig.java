@@ -5,7 +5,6 @@ import org.springframework.context.annotation.ImportResource;
 
 @Configuration
 @ImportResource({"classpath:/spring/spring-dao.xml"})
-
-public class DruidConfig {
+public class DaoConfig {
 
 }

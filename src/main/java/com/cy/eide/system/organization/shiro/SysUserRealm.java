@@ -9,14 +9,11 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
-
-
 @Component
 public class SysUserRealm extends AuthorizingRealm {
 
-    @Autowired(required = false)
-    private SysUserService sysUserService;
+    @Autowired
+    SysUserService sysUserService;
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
@@ -30,7 +27,7 @@ public class SysUserRealm extends AuthorizingRealm {
         if(sysUser == null){
             throw new UnknownAccountException();
         }
-        if(sysUser.getLockflag() == 1){
+        if(sysUser.getLockflag() == 0){
             throw new LockedAccountException();
         }
 

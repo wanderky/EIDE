@@ -1,6 +1,6 @@
 package com.cy.eide.framework.util;
 
-import com.cy.eide.framework.config.DruidConfig;
+import com.cy.eide.framework.config.DaoConfig;
 import com.cy.eide.framework.config.BeanScanConfig;
 import org.junit.Assert;
 import org.junit.Test;
@@ -13,7 +13,7 @@ import java.sql.SQLException;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {DruidConfig.class, BeanScanConfig.class})
+@ContextConfiguration(classes = {DaoConfig.class, BeanScanConfig.class})
 public class DruidUtilsTest {
 
     @Autowired

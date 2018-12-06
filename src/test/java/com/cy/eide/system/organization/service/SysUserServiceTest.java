@@ -1,25 +1,17 @@
 package com.cy.eide.system.organization.service;
 
-import com.cy.eide.framework.config.BeanScanConfig;
-import com.cy.eide.framework.config.DruidConfig;
 import com.cy.eide.framework.config.ShiroConfig;
-import com.cy.eide.framework.config.WebConfig;
 import com.cy.eide.system.organization.entity.SysUser;
-import com.cy.eide.system.organization.mapper.SysUserMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.UUID;
 
-import static org.junit.Assert.*;
-
-@Configuration
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {DruidConfig.class,BeanScanConfig.class,ShiroConfig.class})
+@ContextConfiguration(classes = {ShiroConfig.class})
 public class SysUserServiceTest {
 
     @Autowired
