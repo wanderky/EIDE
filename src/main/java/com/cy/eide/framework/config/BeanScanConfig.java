@@ -5,7 +5,9 @@ import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.realm.Realm;
 import org.springframework.context.annotation.*;
 
-
+/**
+ * spring自动注入配置扫描路径
+ */
 @Configuration
 @ComponentScan({"com.cy.eide.system.organization.entity","com.cy.eide.system.organization.service","com.cy.eide.system.organization.shiro"})
 public class BeanScanConfig {

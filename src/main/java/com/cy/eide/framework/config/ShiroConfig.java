@@ -7,29 +7,44 @@ import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.springframework.beans.factory.config.MethodInvokingFactoryBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
+
+/**
+ * 初始化shiro securityUtils到spring容器
+ */
 
 @Configuration
-@ImportResource("/spring/spring-dao.xml")
-@ComponentScan({"com.cy.eide.system.organization.service","com.cy.eide.system.organization.entity"})
 public class ShiroConfig{
+
+    /**
+     * 配置自定义Realm
+     * @return
+     */
     @Bean
     SysUserRealm sysUserRealm(){
         return new SysUserRealm();
     }
+
+    /**
+     *注入自定义Realm到DefaultSecurityManager
+     * @return
+     */
 
     @Bean
     SecurityManager securityManager(){
         return new DefaultSecurityManager(sysUserRealm());
     }
 
+
     @Bean(name = "lifecycleBeanPostProcessor")
     LifecycleBeanPostProcessor lifecycleBeanPostProcessor(){
         return new LifecycleBeanPostProcessor();
     }
 
+    /**
+     * 注入DefaultSecurityManager到securityUtils
+     * @return
+     */
     @Bean
     MethodInvokingFactoryBean methodInvokingFactoryBean(){
         MethodInvokingFactoryBean methodInvokingFactoryBean = new MethodInvokingFactoryBean();

@@ -6,13 +6,16 @@ import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 
-@Component
+/**
+ * DruidDataSource工具类，获取数据源
+ */
+
 public class DruidUtils {
 
     @Autowired
-    private DataSource dataSource;
+    private static DataSource dataSource;
 
-    public DataSource getDataSource(){
+    public static DataSource getDataSource(){
         return dataSource;
     }
 

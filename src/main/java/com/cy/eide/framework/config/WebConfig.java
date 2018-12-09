@@ -31,7 +31,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     /**
      * 对静态资源的请求转发到Servlet容器中默认的Servlet上
-     *
      * @param configurer
      */
     @Override
