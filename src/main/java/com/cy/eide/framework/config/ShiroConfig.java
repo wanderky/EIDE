@@ -5,6 +5,8 @@ import com.cy.eide.system.organization.shiro.SysUserRealm;
 import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
+import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
+import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.beans.factory.config.MethodInvokingFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,7 +36,7 @@ public class ShiroConfig {
 
     @Bean
     SecurityManager securityManager() {
-        return new DefaultSecurityManager(sysUserRealm());
+        return new DefaultWebSecurityManager(sysUserRealm());
     }
 
 
@@ -54,5 +56,16 @@ public class ShiroConfig {
         methodInvokingFactoryBean.setStaticMethod("org.apache.shiro.SecurityUtils.setSecurityManager");
         methodInvokingFactoryBean.setArguments(securityManager());
         return methodInvokingFactoryBean;
+    }
+
+    @Bean(name = "shiroFilter" )
+    ShiroFilterFactoryBean shiroFilterFactoryBean(){
+        ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
+        shiroFilterFactoryBean.setFilterChainDefinitions("/index.jsp = user");
+        shiroFilterFactoryBean.setLoginUrl("/login.action");
+        shiroFilterFactoryBean.setSuccessUrl("/first.action");
+        shiroFilterFactoryBean.setUnauthorizedUrl("/refuse.jsp");
+        shiroFilterFactoryBean.setSecurityManager(securityManager());
+        return shiroFilterFactoryBean;
     }
 }
