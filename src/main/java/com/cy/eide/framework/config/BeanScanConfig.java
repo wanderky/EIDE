@@ -1,15 +1,13 @@
 package com.cy.eide.framework.config;
 
-import com.cy.eide.framework.util.DruidUtils;
-import org.apache.shiro.mgt.DefaultSecurityManager;
-import org.apache.shiro.realm.Realm;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * spring自动注入配置扫描路径
  */
 @Configuration
-@ComponentScan({"com.cy.eide.system.organization.entity","com.cy.eide.system.organization.service","com.cy.eide.system.organization.shiro"})
+@ComponentScan({"com.cy.eide.system.organization.entity", "com.cy.eide.system.organization.service", "com.cy.eide.system.organization.shiro"})
 public class BeanScanConfig {
-
+	
 }

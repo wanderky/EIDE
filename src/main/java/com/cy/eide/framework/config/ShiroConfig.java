@@ -14,39 +14,42 @@ import org.springframework.context.annotation.Configuration;
  */
 
 @Configuration
-public class ShiroConfig{
+public class ShiroConfig {
 
     /**
      * 配置自定义Realm
+     *
      * @return
      */
     @Bean
-    SysUserRealm sysUserRealm(){
+    SysUserRealm sysUserRealm() {
         return new SysUserRealm();
     }
 
     /**
-     *注入自定义Realm到DefaultSecurityManager
+     * 注入自定义Realm到DefaultSecurityManager
+     *
      * @return
      */
 
     @Bean
-    SecurityManager securityManager(){
+    SecurityManager securityManager() {
         return new DefaultSecurityManager(sysUserRealm());
     }
 
 
     @Bean(name = "lifecycleBeanPostProcessor")
-    LifecycleBeanPostProcessor lifecycleBeanPostProcessor(){
+    LifecycleBeanPostProcessor lifecycleBeanPostProcessor() {
         return new LifecycleBeanPostProcessor();
     }
 
     /**
      * 注入DefaultSecurityManager到securityUtils
+     *
      * @return
      */
     @Bean
-    MethodInvokingFactoryBean methodInvokingFactoryBean(){
+    MethodInvokingFactoryBean methodInvokingFactoryBean() {
         MethodInvokingFactoryBean methodInvokingFactoryBean = new MethodInvokingFactoryBean();
         methodInvokingFactoryBean.setStaticMethod("org.apache.shiro.SecurityUtils.setSecurityManager");
         methodInvokingFactoryBean.setArguments(securityManager());
