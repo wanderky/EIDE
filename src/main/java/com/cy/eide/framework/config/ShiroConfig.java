@@ -57,14 +57,22 @@ public class ShiroConfig {
         return methodInvokingFactoryBean;
     }
 
-    @Bean(name = "shiroFilter" )
+/*    @Bean
+    public DelegatingFilterProxy setDelegatingFilterProxy(){
+        DelegatingFilterProxy delegatingFilterProxy = new DelegatingFilterProxy();
+        delegatingFilterProxy.setTargetFilterLifecycle(true);
+        delegatingFilterProxy.setTargetBeanName("shiroFilterFactoryBean");
+        return delegatingFilterProxy;
+    }*/
+
+    @Bean(value = "shiroFilter")
     ShiroFilterFactoryBean shiroFilterFactoryBean(){
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
-        shiroFilterFactoryBean.setFilterChainDefinitions("/index.jsp = user");
         shiroFilterFactoryBean.setLoginUrl("/login.action");
-        shiroFilterFactoryBean.setSuccessUrl("/first.action");
-        shiroFilterFactoryBean.setUnauthorizedUrl("/refuse.jsp");
+        shiroFilterFactoryBean.setSuccessUrl("/main.jsp");
+        shiroFilterFactoryBean.setUnauthorizedUrl("/unauthorized.jsp");
         shiroFilterFactoryBean.setSecurityManager(securityManager());
+        shiroFilterFactoryBean.setFilterChainDefinitions("/login=authc,roles[admin]");
         return shiroFilterFactoryBean;
     }
 }

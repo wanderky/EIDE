@@ -16,7 +16,7 @@ public class LoginController {
         return "index";
     }
 
-    @RequestMapping(value = "/login",method = RequestMethod.GET)
+    @RequestMapping(value = "/login111",method = RequestMethod.GET)
     public String login(HttpServletRequest request) throws Exception, CustomException {
 
         //如果登陆失败从request中获取认证异常信息，shiroLoginFailure就是shiro异常类的全限定名
